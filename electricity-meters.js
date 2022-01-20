@@ -56,9 +56,10 @@ module.exports = function(pool) {
 	}
 
 	// highestBalanceStreet
-	async function highestBalanceStreet(meterId){
-		const highestBalance = await pool.query('SELECT sum(balance) from electricity_meter WHERE id = $1 ORDER BY balance desc LIMIT 1', [meterId]);
-		return highestBalance;
+	async function highestBalanceStreet(nameOfStreet){
+        var highestBalance = await pool.query('SELECT * from electricity_meter join street on street.id = electricity_meter.street_id WHERE name = $1 ORDER BY balance desc LIMIT 1', [nameOfStreet]);
+		// const highestBalance = await pool.query('SELECT sum(balance) from electricity_meter WHERE id = $1 ORDER BY balance desc LIMIT 1', [meterId]);
+		return highestBalance.rows;
 	}
 
 	return {
