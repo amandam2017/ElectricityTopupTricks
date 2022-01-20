@@ -49,6 +49,7 @@ app.get('/appliances', async function(req, res){
 })
 
 app.get('/meter/:street_id', async function(req, res) {
+	const meters = await electricityMeters.topupElectricity();
 
 	// use the streetMeters method in the factory function...
 	// send the street id in as sent in by the URL parameter street_id - req.params.street_id
@@ -63,6 +64,7 @@ app.get('/meter/:street_id', async function(req, res) {
 });
 
 app.get('/meter/use/:meter_id', async function(req, res) {
+	const meters = await electricityMeters.useElectricity();
 
 	// show the current meter balance and select the appliance you are using electricity for
 	res.render('use_electicity', {

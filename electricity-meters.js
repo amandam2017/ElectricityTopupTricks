@@ -29,8 +29,10 @@ module.exports = function(pool) {
 	}
 
 	// increase the meter balance for the meterId supplied
-	function topupElectricity(meterId, units) {
-		// const meterBalanceIncrease = await pool.query('')
+	async function topupElectricity(meterId, units) {
+		console.log('meterID?'+meterId)
+		const meterBalanceIncrease = await pool.query('UPDATE electricity_meter SET balance +20 WHERE meterId = $1', [meterId]);
+		return meterBalanceIncrease;
 
 	}
 	
@@ -40,7 +42,9 @@ module.exports = function(pool) {
 	}
 
 	// decrease the meter balance for the meterId supplied
-	function useElectricity(meterId, units) {
+	async function useElectricity(meterId, units) {
+		const meterBalanceIncrease = await pool.query('UPDATE electricity_meter SET balance -30 WHERE meterId = $1', [meterId]);
+		return meterBalanceIncrease;
 	
 	}
 
