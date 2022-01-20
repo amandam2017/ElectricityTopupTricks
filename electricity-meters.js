@@ -37,8 +37,9 @@ module.exports = function(pool) {
 	
 	// return the data for a given balance
 	async function meterData(meterId) {
-		const getMeter = await pool.query('SELECT * from electricity_meter WHERE balance = $1', [meterId]);
-		return getMeter;
+		const getMeter = await pool.query('SELECT balance from electricity_meter WHERE id = $1', [meterId]);
+		return getMeter.rows;
+		
 	}
 
 	// decrease the meter balance for the meterId supplied
@@ -48,13 +49,19 @@ module.exports = function(pool) {
 	
 	}
 
+	// lowestBalanceMeter
+	// async function lowestBalanceMeter(){
+	// 	const smallBalance = await pool.query('SELECT balance from electricity_meter ORDER BY asc')
+	// }
+
 	return {
 		streets,
 		streetMeters,
 		appliances,
 		topupElectricity,
 		meterData,
-		useElectricity
+		useElectricity,
+		// lowestBalanceMeter
 	}
 
 
