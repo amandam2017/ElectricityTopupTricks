@@ -24,7 +24,6 @@ create table electricity_meter (
  
 );
 
--- 3 meters per street
 insert into street (name) values ('Miller Street');
 insert into street (name) values ('Mathaba Crescent');
 insert into street (name) values ('Vilakazi Road');

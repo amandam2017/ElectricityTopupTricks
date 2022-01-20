@@ -1,3 +1,4 @@
+[![Build Status](https://app.travis-ci.com/amandam2017/ElectricityTopupTricks.svg?branch=main)](https://app.travis-ci.com/amandam2017/ElectricityTopupTricks)
 # ElectricityTopupTricks
 
 Create a web app, to help your local Municipality to track electricity usage per household. Each month the Municipality gives each household 50 units each for free. Households can topup if they need extra electricity.
@@ -83,3 +84,9 @@ Deploy your application to Heroku.
 2. As soon as you have the **App Deployment link**, please update the form.
 * We need all three links by latest 13h00
 * We will review up to your final commit by 17h00.
+
+
+
+<!-- Amanda -->
+Create database
+electricity meter brings street table within (linked useing foreign key)
