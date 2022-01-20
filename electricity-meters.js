@@ -13,7 +13,18 @@ module.exports = function(pool) {
 	}
 
 	// return all the appliances
-	function appliances() {
+	async function appliances() {
+		const applianceList = await pool.query('SELECT * FROM appliance');
+		// return applianceList.rows;
+		// use a forEach
+		const allAppliances = [];
+		applianceList.rows.forEach(function(applianceNames){
+			allAppliances.push(applianceNames.name);
+
+		});
+
+		return allAppliances;
+		
 
 	}
 
