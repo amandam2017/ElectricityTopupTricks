@@ -42,7 +42,7 @@ app.get('/streets', async function(req, res) {
 
 app.get('/appliances', async function(req, res){
 	const appliances = await electricityMeters.appliances();
-	console.log('show me appliances'+appliances);
+	// console.log('show me appliances'+appliances);
 	res.render('appliances', {
 		appliances
 	});
