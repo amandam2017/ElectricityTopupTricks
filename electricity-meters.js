@@ -50,9 +50,16 @@ module.exports = function(pool) {
 	}
 
 	// lowestBalanceMeter
-	// async function lowestBalanceMeter(){
-	// 	const smallBalance = await pool.query('SELECT balance from electricity_meter ORDER BY asc')
-	// }
+	async function lowestBalanceMeter(meterId){
+		const smallBalance = await pool.query('SELECT * from electricity_meter WHERE id = $1 ORDER BY balance asc LIMIT 1', [meterId]);
+		return smallBalance;
+	}
+
+	// highestBalanceStreet
+	async function highestBalanceStreet(meterId){
+		const highestBalance = await pool.query('SELECT sum(balance) from electricity_meter WHERE id = $1 ORDER BY balance desc LIMIT 1', [meterId]);
+		return highestBalance;
+	}
 
 	return {
 		streets,
@@ -61,7 +68,8 @@ module.exports = function(pool) {
 		topupElectricity,
 		meterData,
 		useElectricity,
-		// lowestBalanceMeter
+		lowestBalanceMeter,
+		highestBalanceStreet
 	}
 
 
