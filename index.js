@@ -8,7 +8,7 @@ const PORT =  process.env.PORT || 3017;
 
 const ElectricityMeters = require('./electricity-meters');
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/topups';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/topups';
 
 const pool = new Pool({
     connectionString  
@@ -39,6 +39,14 @@ app.get('/streets', async function(req, res) {
 		streets
 	});
 });
+
+app.get('/appliances', async function(req, res){
+	const appliances = await electricityMeters.appliances();
+	console.log('show me appliances'+appliances);
+	res.render('appliances', {
+		appliances
+	});
+})
 
 app.get('/meter/:street_id', async function(req, res) {
 

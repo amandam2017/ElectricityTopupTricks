@@ -8,28 +8,29 @@ module.exports = function(pool) {
 	}
 
 	// for a given street show all the meters and their balances
-	function streetMeters(streetId) {
+	async function streetMeters(streetId) {
+		const streetBalanceData = await pool.query('SELECT * from electricity_meter');
+		return streetBalanceData.rows;
 
 	}
 
 	// return all the appliances
 	async function appliances() {
 		const applianceList = await pool.query('SELECT * FROM appliance');
-		// return applianceList.rows;
+		return applianceList.rows;
 		// use a forEach
-		const allAppliances = [];
-		applianceList.rows.forEach(function(applianceNames){
-			allAppliances.push(applianceNames.name);
+		// const allAppliances = [];
+		// applianceList.rows.forEach(function(applianceNames){
+		// 	allAppliances.push(applianceNames.name);
 
-		});
+		// });
 
-		return allAppliances;
-		
-
+		// return allAppliances;
 	}
 
 	// increase the meter balance for the meterId supplied
 	function topupElectricity(meterId, units) {
+		// const meterBalanceIncrease = await pool.query('')
 
 	}
 	

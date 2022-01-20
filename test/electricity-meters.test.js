@@ -44,24 +44,44 @@ describe("The Electricity meter", function() {
 		const appliances = await electricityMeters.appliances();
 		
 		assert.deepStrictEqual([
-	    "Stove",
-        "TV",
-        "Heater",
-        "Fridge",
-        "Kettle"
+			  {
+				    "id": 1,
+				    "name": "Stove",
+				    "rate": "4.50"
+				  },
+				  {
+				    "id": 2,
+				    "name": "TV",
+				    "rate": "1.80"
+				  },
+				  {
+				    "id": 3,
+				    "name": "Heater",
+				    "rate": "3.50"
+				  },
+				  {
+				    "id": 4,
+				    "name": "Fridge",
+				    "rate": "4.00"
+				  },
+				  {
+				    "id": 5,
+				    "name": "Kettle",
+				    "rate": "2.70"
+				  }
 
 		], appliances);
 
 	});
 
-	it("should see all the appliances", async function() {
+	// it("should see all the appliances", async function() {
 
-		const electricityMeters = ElectricityMeters(pool);
-		const appliances = await electricityMeters.appliances();
+	// 	const electricityMeters = ElectricityMeters(pool);
+	// 	const appliances = await electricityMeters.appliances();
 		
-		assert.deepStrictEqual([], appliances);
+	// 	assert.deepStrictEqual([], appliances);
 
-	});
+	// });
 
 	it("should be able to topup electricity", async function() {
 
